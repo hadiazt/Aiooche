@@ -11,15 +11,17 @@ const settings = {
 const { Client, MessageEmbed } = require('discord.js')
 const client = new Client()
 client.login(DATA.token)
-const MSG = new MessageEmbed()
-    .setColor('#0e721a')
-    .setTimestamp()
+
 
 client.on("ready", () => {
     console.log('CONNECTED TO : ' + client.user.tag)
 
 
     setInterval(() => {
+        const MSG = new MessageEmbed()
+        .setColor('#0e721a')
+        .setTimestamp()
+        
         var DATE = new Date;
         var TIME = `${DATE.getHours()}:${DATE.getMinutes()}`;
 
