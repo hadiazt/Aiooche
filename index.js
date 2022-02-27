@@ -9,7 +9,10 @@ const settings = {
 }
 
 const { Client, MessageEmbed } = require('discord.js')
-const client = new Client()
+const client = new Client({
+    intents: '14079',
+    disableMentions: 'everyone',
+})
 client.login(DATA.token)
 
 
@@ -18,10 +21,25 @@ client.on("ready", () => {
 
 
     setInterval(() => {
+
+        yt.getChannelInfo(settings).then((response) => {
+            var SUBCOUNT = response.subscriberCount;
+
+            client.user.setPresence({
+                status: 'dnd',
+                activities: [{
+                    type: 'WATCHING',
+                    name: `${SUBCOUNT} Subscribers`,
+                }]
+            });
+        });
+
+
+
         const MSG = new MessageEmbed()
-        .setColor('#0e721a')
-        .setTimestamp()
-        
+            .setColor('#0e721a')
+            .setTimestamp()
+
         var DATE = new Date;
         var TIME = `${DATE.getHours()}:${DATE.getMinutes()}`;
 
@@ -40,9 +58,8 @@ client.on("ready", () => {
                     var TL = response.channelLinks.primaryLinks[0].url;
                     var IG = response.channelLinks.secondaryLinks[0].url;
 
-                    MSG.setAuthor(NAME, ICON, CHANNELURL)
+                    MSG.setAuthor({ name: NAME, iconURL: ICON, url: CHANNELURL })
                     MSG.setImage(IMG)
-                    MSG.description
                     MSG.setDescription(DES + `\n\n${EMOJI.YT} [YouTube](${CHANNELURL}) | ${EMOJI.TL} [Telegram](${TL}) | ${EMOJI.IG} [Instagram](${IG})`)
                     MSG.addFields(
                         { name: EMOJI.SUB + ' Subscribers', value: SUBCOUNT, inline: true },
@@ -73,9 +90,12 @@ client.on("ready", () => {
                         )
                     })
 
-                    client.channels.cache.get(DATA.CHANNEL).send(MSG)
                 }
             })
+
+            setTimeout(() => {
+                client.channels.cache.get(DATA.CHANNEL).send({ embeds: [embed] })
+            }, 6000);
         }
     }, 60000);
 
