@@ -1,14 +1,19 @@
 {
-    "token": "ODg5OTA3NTU0NjkwNDMzMDY0.YUoE_g.MiX_W-uJwsC4OEpFxKHZj74m9-o",
-    "TIME":"21:59",
-    "CHANNEL":"941356796709339158",
+    "token": "",
+    "TIME": "21:59",
+    "CHANNEL": "941356796709339158",
     "EMOJI": {
-        "SUB":":bell:",
+        "SUB": ":bell:",
         "IG": "<:Instagram:941336156589662218>",
         "TL": "<:Telegram:941334618941038612>",
         "YT": "<:YouTube:941335443906105414>",
         "VIEW": ":eyes:",
         "TIME": ":clock:",
         "AGO": ":clock12:"
+    },
+    "Channels": {
+        "SUB": "",
+        "TOTAL": "",
+        "VDS": ""
     }
 }
