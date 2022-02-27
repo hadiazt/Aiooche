@@ -25,6 +25,8 @@ client.on("ready", () => {
         yt.getChannelInfo(settings).then((response) => {
             var SUBCOUNT = response.subscriberCount;
 
+            client.channels.cache.get(DATA.Channels.SUB).setName('𝙎𝙐𝘽 𝘾𝙊𝙐𝙉𝙏 🧮 : ' + SUBCOUNT)
+
             client.user.setPresence({
                 status: 'dnd',
                 activities: [{
@@ -34,7 +36,15 @@ client.on("ready", () => {
             });
         });
 
+        yt.getChannelStats(settings).then((response) => {
+            var MAXVIEW = response.viewCount;
+            client.channels.cache.get(DATA.Channels.TOTAL).setName('𝙏𝙊𝙏𝘼𝙇 𝙑𝙄𝙀𝙒 👁️ : ' + MAXVIEW)
+        })
 
+        yt.getChannelVideos(settings).then((response) => {
+            var VIDEOS = response.items.length;
+            client.channels.cache.get(DATA.Channels.VDS).setName('𝙏𝙊𝙏𝘼𝙇 𝙑𝙄𝘿𝙀𝙊 🎥 : ' + VIDEOS)
+        })
 
         const MSG = new MessageEmbed()
             .setColor('#0e721a')
