@@ -72,7 +72,7 @@ client.on("ready", () => {
                     MSG.setImage(IMG)
                     MSG.setDescription(DES + `\n\n${EMOJI.YT} [YouTube](${CHANNELURL}) | ${EMOJI.TL} [Telegram](${TL}) | ${EMOJI.IG} [Instagram](${IG})`)
                     MSG.addFields(
-                        { name: EMOJI.SUB + ' Subscribers', value: SUBCOUNT, inline: true },
+                        { name: EMOJI.SUB + ' Subscribers', value: '** **' + SUBCOUNT, inline: true },
                     )
                 }
             })
@@ -81,7 +81,7 @@ client.on("ready", () => {
                 var MAXVIEW = response.viewCount;
 
                 MSG.addFields(
-                    { name: EMOJI.VIEW + ' Total Channel View', value: MAXVIEW, inline: true },
+                    { name: EMOJI.VIEW + ' Total Channel View', value: '** **' + MAXVIEW, inline: true },
                 )
             })
 
@@ -96,7 +96,7 @@ client.on("ready", () => {
                         var TIME = video.durationText
                         var AGO = video.publishedText
                         MSG.addFields(
-                            { name: TITLE, value: EMOJI.VIEW + ' ' + VIEW + '\n' + EMOJI.TIME + ' ' + TIME + '\n' + EMOJI.AGO + ' ' + AGO, inline: true },
+                            { name: TITLE, value: '** ** ' + EMOJI.VIEW + ' ' + VIEW + '\n' + EMOJI.TIME + ' ' + TIME + '\n' + EMOJI.AGO + ' ' + AGO, inline: true },
                         )
                     })
 
@@ -104,7 +104,7 @@ client.on("ready", () => {
             })
 
             setTimeout(() => {
-                client.channels.cache.get(DATA.CHANNEL).send({ embeds: [embed] })
+                client.channels.cache.get(DATA.CHANNEL).send({ embeds: [MSG] })
             }, 6000);
         }
     }, 60000);
