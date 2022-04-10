@@ -8,7 +8,7 @@
   },
   "author": "hadi.az",
   "dependencies": {
-    "yt-channel-info": "^3.0.0",
+    "yt-channel-info": "^3.0.3",
     "discord.js":"13.6.0"
   }
 }
