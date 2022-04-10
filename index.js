@@ -6,6 +6,7 @@ const settings = {
     channelId: 'UCHC6XUkn1gXQq6bsk5fu0ww',
     sortBy: 'newest',
     channelIdType: 0,
+    continuation: '4qmFsgKDARIYVUNIQzZYVWtuMWdYUXE2YnNrNWZ1MHd3GjhFZ1oyYVdSbGIzTVlBeUFBTUFFNEFlb0RGME5uUVZORGQybHpPRXRwUnpBMU5sazNXVTFDUzBSSpoCLGJyb3dzZS1mZWVkVUNIQzZYVWtuMWdYUXE2YnNrNWZ1MHd3dmlkZW9zMTAy',
 }
 
 const { Client, MessageEmbed } = require('discord.js')
@@ -41,8 +42,8 @@ client.on("ready", () => {
             client.channels.cache.get(DATA.Channels.TOTAL).setName('𝙏𝙊𝙏𝘼𝙇 𝙑𝙄𝙀𝙒 👁️ : ' + MAXVIEW)
         })
 
-        yt.getChannelVideos(settings).then((response) => {
-            var VIDEOS = response.items.length;
+        yt.getChannelVideosMore(settings).then((response) => {
+            var VIDEOS = response.items.length + 30;
             client.channels.cache.get(DATA.Channels.VDS).setName('𝙏𝙊𝙏𝘼𝙇 𝙑𝙄𝘿𝙀𝙊 🎥 : ' + VIDEOS)
         })
 
